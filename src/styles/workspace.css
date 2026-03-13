@@ -1,0 +1,593 @@
+/* ═══════════════════════════════════════════════════════════════
+   ARCHON — Workspace Layout
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Custom Title Bar ───────────────────────────────── */
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--titlebar-height);
+  background: var(--bg-deepest);
+  border-bottom: 1px solid var(--border-subtle);
+  -webkit-app-region: drag;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.title-bar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-left: var(--space-3);
+  -webkit-app-region: no-drag;
+}
+
+.title-bar-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+}
+
+.title-bar-logo svg {
+  width: 18px;
+  height: 18px;
+}
+
+.title-bar-project {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  padding: 2px var(--space-2);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+}
+
+.title-bar-controls {
+  display: flex;
+  -webkit-app-region: no-drag;
+}
+
+.title-bar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: var(--titlebar-height);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-smooth);
+}
+
+.title-bar-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.title-bar-btn.close:hover {
+  background: var(--accent-danger);
+  color: white;
+}
+
+.title-bar-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Workspace Layout ───────────────────────────────── */
+.workspace {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-deep);
+}
+
+.workspace-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Toolbar ────────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  height: var(--toolbar-height);
+  padding: 0 var(--space-3);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-smooth);
+  position: relative;
+}
+
+.toolbar-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.toolbar-btn.active {
+  background: var(--accent-muted);
+  color: var(--accent-primary);
+}
+
+.toolbar-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.toolbar-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: 0 var(--space-2);
+  white-space: nowrap;
+}
+
+/* ── Sidebar (Left — AI Panel) ──────────────────────── */
+.sidebar-left {
+  width: var(--sidebar-width);
+  min-width: var(--panel-min-width);
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  animation: slideInLeft var(--duration-slow) var(--ease-smooth);
+}
+
+/* ── Sidebar (Right — Properties) ───────────────────── */
+.sidebar-right {
+  width: var(--sidebar-width);
+  min-width: var(--panel-min-width);
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  animation: slideInRight var(--duration-slow) var(--ease-smooth);
+}
+
+/* ── Viewport ───────────────────────────────────────── */
+.viewport-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.viewport-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.viewport-overlay {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.viewport-overlay > * {
+  pointer-events: auto;
+}
+
+.viewport-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.viewport-nav {
+  position: absolute;
+  bottom: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  z-index: 10;
+}
+
+.viewport-nav-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.viewport-nav-btn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+/* ── Status Bar ─────────────────────────────────────── */
+.status-bar {
+  display: flex;
+  align-items: center;
+  height: var(--statusbar-height);
+  padding: 0 var(--space-3);
+  background: var(--bg-deepest);
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-success);
+}
+
+.status-separator {
+  width: 1px;
+  height: 14px;
+  background: var(--border-subtle);
+}
+
+/* ── AI Chat Panel ──────────────────────────────────── */
+.ai-panel-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ai-panel-header-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-md);
+}
+
+.ai-panel-header-icon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--bg-deepest);
+}
+
+.ai-panel-header-text h3 {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ai-panel-header-text span {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.ai-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ai-message {
+  display: flex;
+  gap: var(--space-2);
+  animation: fadeInUp var(--duration-normal) var(--ease-smooth);
+}
+
+.ai-message-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: var(--text-xs);
+}
+
+.ai-message-avatar.ai {
+  background: var(--gradient-primary);
+  color: var(--bg-deepest);
+}
+
+.ai-message-avatar.user {
+  background: var(--bg-active);
+  color: var(--text-secondary);
+}
+
+.ai-message-content {
+  flex: 1;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.ai-message-content strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.ai-message-content code {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background: var(--bg-dark);
+  padding: 1px var(--space-1);
+  border-radius: var(--radius-sm);
+  color: var(--accent-primary);
+}
+
+.ai-input-area {
+  padding: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ai-input-wrapper {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-end;
+}
+
+.ai-input {
+  flex: 1;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-dark);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  resize: none;
+  max-height: 100px;
+  font-family: var(--font-sans);
+}
+
+.ai-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-muted);
+}
+
+.ai-send-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-primary);
+  border-radius: var(--radius-md);
+  color: var(--bg-deepest);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.ai-send-btn:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.ai-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+}
+
+.ai-suggestion {
+  padding: var(--space-1) var(--space-2);
+  background: var(--bg-dark);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.ai-suggestion:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: var(--accent-muted);
+}
+
+/* ── Properties Panel ───────────────────────────────── */
+.props-section {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.props-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+  cursor: pointer;
+}
+
+.props-section-title:hover {
+  color: var(--text-secondary);
+}
+
+.props-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.props-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.props-field label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.props-field .prop-input {
+  width: 100%;
+}
+
+/* ── Material Card ──────────────────────────────────── */
+.material-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-dark);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.material-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-elevated);
+}
+
+.material-card.selected {
+  border-color: var(--accent-primary);
+  background: var(--accent-muted);
+}
+
+.material-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+}
+
+.material-info {
+  flex: 1;
+}
+
+.material-name {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.material-props {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ── Simulation Panel ───────────────────────────────── */
+.sim-metric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sim-metric:last-child {
+  border-bottom: none;
+}
+
+.sim-metric-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.sim-metric-label svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-primary);
+}
+
+.sim-metric-value {
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sim-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-dark);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-top: var(--space-2);
+}
+
+.sim-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--duration-slow) var(--ease-smooth);
+}
+
+.sim-bar-fill.good {
+  background: linear-gradient(90deg, var(--accent-success), #4ade80);
+}
+
+.sim-bar-fill.medium {
+  background: linear-gradient(90deg, var(--accent-warning), #fbbf24);
+}
+
+.sim-bar-fill.poor {
+  background: linear-gradient(90deg, var(--accent-danger), #f87171);
+}

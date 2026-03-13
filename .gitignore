@@ -1,0 +1,9 @@
+node_modules
+dist
+dist-electron
+*.local
+.env
+.env.*
+.DS_Store
+release
+dist-web
