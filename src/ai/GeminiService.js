@@ -58,7 +58,7 @@ Regras Críticas para as Dimensões (em metros):
 - torus: { radius, tube }
 
 Posicione os componentes logicamente montando o objeto no espaço 3D, com y=0 sendo o chão.
-Gere pelo menos de 5 a 15 componentes detalhados para o projeto.
+Gere DE 20 a 40 COMPONENTES EXTREMAMENTE DETALHADOS para o projeto. Este é um software CAD realista: sebre tudo em peças menores (motores, suportes, parafusos principais, eixos, painéis, fios, carenagem, estrutura interna, baterias, sensores). A complexidade do projeto é vital.
 Não inclua markdown (não use \`\`\`json). Retorne APENAS o JSON válido.
 `;
 

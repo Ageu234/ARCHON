@@ -794,15 +794,17 @@ export class AIEngine {
 
   getGenerationSteps() {
     return [
-      { label: 'Analisando descrição com NLP...', duration: 800 },
-      { label: 'Classificando tipo de projeto...', duration: 600 },
-      { label: 'Extraindo especificações técnicas...', duration: 900 },
-      { label: 'Selecionando componentes ideais...', duration: 1200 },
-      { label: 'Calculando dimensões e posições...', duration: 1000 },
-      { label: 'Definindo materiais por função...', duration: 800 },
-      { label: 'Gerando geometria 3D...', duration: 1500 },
-      { label: 'Validando integridade estrutural...', duration: 700 },
-      { label: 'Montando modelo final...', duration: 600 },
+      { label: 'Analisando requisitos de engenharia...', duration: 1800 },
+      { label: 'Pesquisando componentes similares na base de dados...', duration: 2400 },
+      { label: 'Modelando estrutura primária (chassi/frame)...', duration: 2100 },
+      { label: 'Calculando matriz de massa e centro de gravidade...', duration: 1500 },
+      { label: 'Posicionando motores e atuadores mecânicos...', duration: 2000 },
+      { label: 'Gerando cabeamento e eletrônica interna...', duration: 1800 },
+      { label: 'Design da carenagem externa e aerodinâmica...', duration: 2500 },
+      { label: 'Aplicando materiais baseados na função estrutural...', duration: 1200 },
+      { label: 'Testando conexões entre os componentes montados...', duration: 1600 },
+      { label: 'Validando simulação de stress nas juntas...', duration: 2200 },
+      { label: 'Finalizando projeto para renderização e manufatura...', duration: 1100 },
     ];
   }
 }
