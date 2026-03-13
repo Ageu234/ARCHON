@@ -577,3 +577,35 @@
   margin-bottom: var(--space-4);
   border: 1px solid rgba(46, 213, 115, 0.2);
 }
+
+/* ── Responsive Components ─────────────────────────── */
+@media (max-width: 640px) {
+  .modal {
+    max-width: 92vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-body {
+    padding: var(--space-4);
+    overflow-y: auto;
+  }
+
+  .modal-header {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .modal-footer {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .btn-lg {
+    width: 100%;
+  }
+  
+  .auth-modal {
+    max-width: 100%;
+    margin: var(--space-4);
+  }
+}

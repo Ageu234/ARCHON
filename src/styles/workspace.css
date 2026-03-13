@@ -591,3 +591,69 @@
 .sim-bar-fill.poor {
   background: linear-gradient(90deg, var(--accent-danger), #f87171);
 }
+
+/* ── Responsive Workspace ───────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .workspace-body {
+    position: relative;
+  }
+
+  .sidebar-left, 
+  .sidebar-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 50;
+    transition: transform var(--duration-normal) var(--ease-smooth);
+    background: var(--bg-surface);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .sidebar-left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  .sidebar-right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  .sidebar-left.open,
+  .sidebar-right.open {
+    transform: translateX(0);
+  }
+
+  .toolbar {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 2px;
+  }
+
+  .toolbar::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  .viewport-overlay {
+    top: auto;
+    bottom: var(--space-4);
+    left: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .title-bar-project {
+    display: none;
+  }
+
+  .sidebar-left, 
+  .sidebar-right {
+    width: 85vw;
+  }
+}

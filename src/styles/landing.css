@@ -371,3 +371,54 @@
   align-items: center;
   justify-content: center;
 }
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .landing-hero h1 {
+    font-size: var(--text-3xl);
+  }
+
+  .landing-hero p {
+    font-size: var(--text-base);
+  }
+
+  .landing-content {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .quickstart-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .landing-features {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+    align-items: center;
+  }
+
+  .landing-quickstart {
+    margin-top: var(--space-8);
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-logo-text {
+    font-size: var(--text-xl);
+  }
+
+  .landing-logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .landing-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
